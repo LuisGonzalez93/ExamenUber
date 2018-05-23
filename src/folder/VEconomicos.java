@@ -13,8 +13,10 @@ public interface VEconomicos {
 
     /**
      *
-     * @param kilometros
-     * @return
+     * @param kilometros número de kilometros recorridos
+     * @param pasajeros número de pasajeros en el vehículo
+     * @return float con el presupuesto
      */
-    public float calcularTarifa(int kilometros recorridos);
+    public float calcularTarifa(int kilometros);
+    public float calcularTarifa(int pasajeros,int kilometros);
 }

@@ -10,8 +10,15 @@ package folder;
  * @author Alumno
  */
 public interface VPremium {
-    public float calcularTarifa(int kilometros, int nocupantes);
-    public float calcularTarifa(int kilometros, float potencia);
+    /**
+     *
+     * @param kilometros numero de kilómetros recorridos
+     * @param nocupantes numero de pasajeros en el vehículo
+     * @param potencia cantidad de potencia del vehículo
+     * @return float con el presupuesto
+     */
+    public float calcularTarifa(int kilometros, int pasajeros);
+    public float calcularTarifa(int kilometros, double potencia);
     
     
 }
