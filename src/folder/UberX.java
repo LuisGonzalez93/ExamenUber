@@ -5,14 +5,17 @@
  */
 package folder;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alumno
  */
-public class UberX extends Vehiculo implements VEconomicos{
+public class UberX extends Vehiculo{
     
     private final int pasajerosAdmitidos=4; //Se establece el tope de personas que puede albergar el vehículo
     private float precioViaje;  //Guardaremos aqui el precio del viaje 2€/km
+    private String tipoV="UberX";
     public UberX(String matr,TipoCoche tipoCoche) {
         super(matr);
         if(tipoCoche==TipoCoche.ELECTRICO){
@@ -24,9 +27,17 @@ public class UberX extends Vehiculo implements VEconomicos{
         precioViaje=6.00f;
         }
     }
+    @Override
+    public String getType(){
+        return tipoV;
+    }
 
     @Override
-    public float calcularTarifa(int kilometros) {
+    public float calcularTarifa(int pasajeros,int kilometros) {
+        if(pasajeros>pasajerosAdmitidos){
+            JOptionPane.showMessageDialog(null, "UberX no puede albergar mas"
+                    + " de "+pasajerosAdmitidos+" pasajeros");
+        }
         precioViaje+=2*kilometros;
         return precioViaje;
     }
@@ -37,10 +48,4 @@ public class UberX extends Vehiculo implements VEconomicos{
     public int pasajerosAdmitidos(){
         return pasajerosAdmitidos;
     }
-
-    @Override
-    public float calcularTarifa(int pasajeros, int kilometros) {
-        throw new UnsupportedOperationException("Deprecated for UberX. Must to be UberXL"); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

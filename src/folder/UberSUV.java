@@ -5,12 +5,15 @@
  */
 package folder;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alumno
  */
-public class UberSUV extends Vehiculo implements VPremium{
+public class UberSUV extends Vehiculo {
     private float precioViaje;
+    private String tipoV="UberSUV";
     public UberSUV(String matr,CategCoche tipocateg) {
         super(matr);
         if(tipocateg==CategCoche.LUJO){
@@ -24,12 +27,13 @@ public class UberSUV extends Vehiculo implements VPremium{
     }
 
     @Override
-    public float calcularTarifa(int kilometros, int pasajeros) {
-        throw new UnsupportedOperationException("Deprecated for UberSUV. Must to be UberBlack"); //To change body of generated methods, choose Tools | Templates.
+    public String getType(){
+        return tipoV;
     }
-
     @Override
-    public float calcularTarifa(int kilometros, double potencia) {
+    public float calcularTarifa(int pasajeros,int kilometros) {
+        //Pedimos al usuario que ingrese la potencia del vehículo
+        float potencia=Float.parseFloat(JOptionPane.showInputDialog(null,"Introduce la potencia del vehículo"));
         double precioPotencia=0.5*potencia;
         precioViaje+=precioPotencia+(5*kilometros);
         

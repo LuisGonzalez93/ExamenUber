@@ -6,6 +6,8 @@
 package folder;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,20 +63,31 @@ public class Uber {
             }
         }
     }
+    //Ejercicio Apartado nº3
     public String vehiculosDisponibles(int npasajeros,int km){
+        //Albergaremos aqui el precio maximo para ir comparando
+        float precioMáximo;
+        String show="";
+        ArrayList<Vehiculo> listaAMostrar=new ArrayList<Vehiculo>();
         //Tenemos 8 posibles opciones
         //Las matriculas las pondremos vacías porque es algo que aquí no interesa
-        Vehiculo[] vehiculos=new Vehiculo[8];
-        vehiculos[0]=new UberX("",TipoCoche.ELECTRICO);
-        vehiculos[1]=new UberX("",TipoCoche.NO_ELECTRICO);
-        vehiculos[1]=new UberXL("",TipoCoche.ELECTRICO);
-        vehiculos[1]=new UberXL("",TipoCoche.ELECTRICO);
-        vehiculos[1]=new UberX("",TipoCoche.NO_ELECTRICO);
-        vehiculos[1]=new UberX("",TipoCoche.NO_ELECTRICO);
-        vehiculos[1]=new UberX("",TipoCoche.NO_ELECTRICO);
-        vehiculos[1]=new UberX("",TipoCoche.NO_ELECTRICO);
+        listaAMostrar.add(new UberX("",TipoCoche.ELECTRICO));
+        listaAMostrar.add(new UberX("",TipoCoche.NO_ELECTRICO));
+        listaAMostrar.add(new UberXL("",TipoCoche.ELECTRICO));
+        listaAMostrar.add(new UberXL("",TipoCoche.NO_ELECTRICO));
+        listaAMostrar.add(new UberBlack("",CategCoche.LUJO));
+        listaAMostrar.add(new UberBlack("",CategCoche.SUPERLUJO));
+        listaAMostrar.add(new UberSUV("",CategCoche.LUJO));
+        listaAMostrar.add(new UberSUV("",CategCoche.SUPERLUJO));
         
-    return "";
+        //Comparamos los objetos en la lista y los ordenamos con...
+        Collections.sort(listaAMostrar, (Vehiculo o1, Vehiculo o2) -> new Integer((int)o1.calcularTarifa(npasajeros,km)).compareTo((int)o2.calcularTarifa(npasajeros,km)));
+        for(int i=0;i<listaAMostrar.size();i++){
+            show+="\nVehiculo "+listaAMostrar.get(i).getType()+" "+listaAMostrar.get(i).calcularTarifa(npasajeros, km);
+        }
+        
+        
+    return show;
     }
     
     

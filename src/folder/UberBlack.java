@@ -9,8 +9,9 @@ package folder;
  *
  * @author Alumno
  */
-public class UberBlack extends Vehiculo implements VPremium{
+public class UberBlack extends Vehiculo{
     private float precioViaje;
+    private String tipoV="UberBlack";
 
     public UberBlack(String matr,CategCoche tipocateg) {
         super(matr);
@@ -23,18 +24,16 @@ public class UberBlack extends Vehiculo implements VPremium{
         precioViaje=30.00f;
         }
     }
-
     @Override
-    public float calcularTarifa(int kilometros, int pasajeros) {
+    public String getType(){
+        return tipoV;
+    }
+    
+    public float calcularTarifa(int pasajeros,int kilometros) {
         float precioPasajeros=1*pasajeros;
         precioViaje+=precioPasajeros+(2*kilometros);
         
         return precioViaje;
-    }
-
-    @Override
-    public float calcularTarifa(int kilometros, double potencia) {
-        throw new UnsupportedOperationException("Deprecated for UberBlack. Must to be UberSUV"); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

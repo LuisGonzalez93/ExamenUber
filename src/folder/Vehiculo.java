@@ -12,13 +12,20 @@ package folder;
 public class Vehiculo {
     
     //Todo vehículo debe albergar una matrícula
-    
+    private float tarifa;
     private String matricula;
+    private String tipoV;
     public Vehiculo(String matr){
         this.matricula=matr;
     }
     public String getMatricula(){
         return matricula;
+    }
+    public float calcularTarifa(int pasajeros,int km){
+        return tarifa;
+    }
+    public String getType(){
+        return tipoV;
     }
     
 }
