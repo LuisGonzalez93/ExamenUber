@@ -11,41 +11,42 @@ import javax.swing.JOptionPane;
  *
  * @author Alumno
  */
-public class UberX extends Vehiculo{
-    
-    private final int pasajerosAdmitidos=4; //Se establece el tope de personas que puede albergar el vehículo
+public class UberX extends Vehiculo {
+
+    private final int pasajerosAdmitidos = 4; //Se establece el tope de personas que puede albergar el vehículo
     private float precioViaje;  //Guardaremos aqui el precio del viaje 2€/km
-    private String tipoV="UberX";
-    public UberX(String matr,TipoCoche tipoCoche) {
+    private String tipoV = "UberX";
+
+    public UberX(String matr, TipoCoche tipoCoche) {
         super(matr);
-        if(tipoCoche==TipoCoche.ELECTRICO){
+        if (tipoCoche == TipoCoche.ELECTRICO) {
             //4€ Para vehiculos eléctricos
-        precioViaje=4.00f;
-        }
-        else{
+            precioViaje = 4.00f;
+        } else {
             //6€ Para vehiculos no eléctricos
-        precioViaje=6.00f;
+            precioViaje = 6.00f;
         }
     }
+
     @Override
-    public String getType(){
+    public String getType() {
         return tipoV;
     }
 
     @Override
-    public float calcularTarifa(int pasajeros,int kilometros) {
-        if(pasajeros>pasajerosAdmitidos){
+    public float calcularTarifa(int pasajeros, int kilometros) {
+        if (pasajeros > pasajerosAdmitidos) {
             JOptionPane.showMessageDialog(null, "UberX no puede albergar mas"
-                    + " de "+pasajerosAdmitidos+" pasajeros");
+                    + " de " + pasajerosAdmitidos + " pasajeros");
         }
-        precioViaje+=2*kilometros;
+        precioViaje += 2 * kilometros;
         return precioViaje;
     }
-    
+
     /*
     * Método que devuelve el número de pasajeros que admite el vehiculo
-    */
-    public int pasajerosAdmitidos(){
+     */
+    public int pasajerosAdmitidos() {
         return pasajerosAdmitidos;
     }
 }
